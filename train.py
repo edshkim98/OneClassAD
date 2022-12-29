@@ -58,7 +58,6 @@ def train(train_loader, test_loader):
     else:
         print("Features pre-extracted!")
 
-    z_obs = Score_Observer('AUROC')
     avg_valid_losses = []
     for epoch in range(c.meta_epochs):
         # train some epochs
@@ -144,13 +143,3 @@ def train(train_loader, test_loader):
                 np.save('tpr.npy', tpr)
                 torch.save(model.state_dict(), os.getcwd()+"/models/cs_flow.pth")
                 print("Model Saved")
-#             val_loss_save = pd.DataFrame({'loss': avg_valid_losses}).to_csv(os.path.join('/home/edshkim98/synapse/one_class/cs-flow2/cs-flow/val_loss.csv'), index=False)
-            
-        z_obs.update(roc_auc_score(is_anomaly, anomaly_score), epoch,
-                     print_score=c.verbose or epoch == c.meta_epochs - 1)
-        
-#     if c.save_model:
-#         model.to('cpu')
-#         save_model(model, c.modelname)
-
-    return z_obs.max_score, z_obs.last, z_obs.min_loss_score
