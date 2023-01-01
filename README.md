@@ -17,3 +17,5 @@ One-class learning project for anomaly detection using real industrial dataset <
 | --- | --- | --- |--- |
 |**Proposed**| **99.5/7.5%** | **99.9/26.9%** |  **36.5** |
 |CS-Flow| 98.7/55.3% | 99.7/68.0% |  92.8 |
+
+This code is heavily borrowed from the CS-Flow implementation (https://github.com/marco-rudolph/cs-flow)
