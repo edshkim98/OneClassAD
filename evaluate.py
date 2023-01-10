@@ -94,9 +94,9 @@ pretrained = torch.load(args.modelPath)
 model.load_state_dict(pretrained)
 
 #Load dataset
-trainset = SynapseData(c, c.dataset_path+'/'+c.class_name+'/train', train=True)
+# trainset = SynapseData(c, c.dataset_path+'/'+c.class_name+'/train', train=True)
 testset = SynapseData(c, c.dataset_path+'/'+c.class_name+'/test', train=False, ret_path=True)
-train_loader, test_loader = make_dataloaders(trainset, testset)
+_, test_loader = make_dataloaders(testset, testset)
 
 #Evaluate
 evaluate(model, test_loader, mode = args.anomalyMode)
